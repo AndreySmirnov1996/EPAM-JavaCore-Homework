@@ -9,6 +9,7 @@ public class TrafficLight {
     private int minute;
 
     public TrafficLight() {
+        minute = -1;
         System.out.print("Enter the time in minutes: ");
         try (BufferedReader reader = new BufferedReader(new InputStreamReader(System.in))) {
             String line = reader.readLine();
@@ -22,21 +23,21 @@ public class TrafficLight {
         }
     }
 
+    public void colorOfTrafficLightNow() {
+        if (0 <= minute && minute < 2) {
+            System.out.println(Colors.RED);
+        } else if (2 <= minute && minute < 5) {
+            System.out.println(Colors.YELLOW);
+        } else if (5 <= minute && minute < 10) {
+            System.out.println(Colors.GREEN);
+        }
+    }
+
     public void setMinute(int minute) {
         this.minute = minute % timeOfCircle;
     }
 
     public int getMinute() {
         return minute;
-    }
-
-    public void colorOfTrafficLightNow() {
-        if (minute >= 0 && minute <= 2) {
-            System.out.println(Colors.RED);
-        } else if (minute > 2 && minute <= 5) {
-            System.out.println(Colors.YELLOW);
-        } else if (minute > 5) {
-            System.out.println(Colors.GREEN);
-        }
     }
 }
